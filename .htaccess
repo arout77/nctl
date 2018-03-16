@@ -1,0 +1,29 @@
+# php_flag session.auto_start 0
+
+SetEnv mod_rewrite [mod_rewrite]
+
+DirectoryIndex index.php
+
+# ----------------------------------------------------------------------
+# Start rewrite engine
+# ----------------------------------------------------------------------
+
+# Turning on the rewrite engine is necessary for the following rules and features.
+# FollowSymLinks must be enabled for this to work.
+
+Options +FollowSymlinks
+
+# Disable directory browsing
+Options -Indexes
+
+RewriteEngine on
+RewriteBase /nctl/
+
+# Convert index.php?request=controller/action/params to controller/action/params
+RewriteRule ^([a-zA-Z0-9_/-]+)$ index.php?request=$1
+
+# Direct all requests to index.php
+RewriteCond %{REQUEST_FILENAME} -s
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+) index.php/$1 [L] 
