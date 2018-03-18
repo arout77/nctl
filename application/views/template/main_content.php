@@ -22,7 +22,12 @@
             <!-- Main content -->
             <section class="content">
 
-                <?php echo $content; ?>
+                <?php
+                	if ($content)
+                	{
+                		require_once APPPATH . 'views/' . $content . '.php';
+                	}
+                ?>
 
             </section>
         </div>

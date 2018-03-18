@@ -1,9 +1,9 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Today's date: </b><?php echo date('m/d/Y h:i a'); ?>
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy;                                                         <?php echo date('Y'); ?>
+      <a href="<?php echo base_url(); ?>">NCTL</a></strong>
   </footer>
 
   <!-- Control Sidebar -->
@@ -203,10 +203,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 3 -->
-<script src="<?php echo base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="<?php echo base_url(); ?>assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -240,5 +236,6 @@
 <script src="<?php echo base_url(); ?>assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
+
 </body>
 </html>

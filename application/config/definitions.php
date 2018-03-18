@@ -1,2 +1,6 @@
 <?php
-defined('SITEPATH')        OR define('SITEPATH', base_url());
+
+function definitions()
+{
+	defined('SITEURL') OR define('SITEPATH', base_url());
+}
