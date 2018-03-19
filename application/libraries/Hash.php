@@ -15,7 +15,7 @@
  * @link
  */
 
-class MY_Encryption
+class Hash extends CI_Encrypt
 {
 	public function encrypt($string)
 	{
@@ -34,10 +34,8 @@ class MY_Encryption
 		{
 			return TRUE;
 		}
-		else
-		{
-			return FALSE;
-		}
+
+		return FALSE;
 
 	}
 

@@ -17,14 +17,16 @@ $(document).ready(function() {
     $.ajax({
       type: "POST",
       url: '<?php echo base_url(); ?>login/validate',
-      data: 'username='+ username + '&password=' + password, // the data that will be sent to php processor
+      data: 'username='+ username + '&password=' + password,
       dataType: "html",
       success: function(data) {
-        if (data == 0) {
-        $('.login-box-msg').html('<div class="alert alert-danger">Invalid login credentials</div>');
+        if (data == 0 || data == 'Invalid login credentials' || data == 'Password does not match record found for this user') {
+          $('#login-msg-box').removeClass("login-box-msg").addClass("alert alert-danger text-center");
+        $('#login-msg-box').load("<?php echo base_url(); ?>login/validate");
+        return false;
         } else {
         $('.login-box-msg').html('<div class="alert alert-success">Login successful.<br><a href="<?php echo base_url(); ?>dashboard">Click here</a> if your browser does not redirect you.</div>');
-          document.location.href = '<?php echo base_url(); ?>dashboard';
+          document.location.href = '<?php echo base_url(); ?>dashboard/index';
         }
       }
     });
@@ -50,7 +52,7 @@ $(document).ready(function() {
         <form method="post">
     <!-- LOGIN -->
     <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg"><h4>Sign in to start your session</h4></p>
 
       <div class="form-group has-feedback">
         <input type="text" id="username" name="username" class="form-control" placeholder="Email or Username">
@@ -83,7 +85,7 @@ $(document).ready(function() {
     <form method="post">
     <!-- LOGIN -->
     <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p id="login-msg-box" class="login-box-msg">Sign in to start your session</p>
 
       <div class="form-group has-feedback">
         <input type="text" id="username" name="username" class="form-control" placeholder="Email or Username">
